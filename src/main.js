@@ -2,5 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-createApp(App).use(store).use(router).mount('#app')
+import Vant from 'vant'
+import 'vant/lib/index.css'
+import '@/styles/common.less'
+import 'amfe-flexible'
+import componentGlobalPlugin from '@/components/index.js'
+createApp(App).use(store).use(router).use(Vant).use(componentGlobalPlugin).mount('#app')
