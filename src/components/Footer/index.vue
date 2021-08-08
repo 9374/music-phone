@@ -14,8 +14,6 @@ export default {
   setup () {
     const active = ref(0)
     const themeVars = {
-      tabbarHeight: ' 50px',
-      tabbarItemIconSize: '20px',
       tabbarItemActiveColor: 'red'
     }
     return { active, themeVars }
@@ -24,7 +22,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.van-tabbar {
-  bottom: -3px;
+/deep/.van-tabbar {
+  height: 50px;
 }
 </style>

@@ -19,11 +19,7 @@ export default {
   setup () {
     const active = ref(2)
     const themeVars = {
-      tabsLineHeight: '30px',
-      tabFontSize: '15px',
-      tabLineHeight: '20px',
-      tabsNavBackgroundColor: '#f7f7f7',
-      tabsBottomBarWidth: '50px'
+      tabsNavBackgroundColor: '#f7f7f7'
     }
     const onClickTab = () => {
       console.log('123')

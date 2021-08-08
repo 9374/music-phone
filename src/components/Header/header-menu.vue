@@ -1,5 +1,5 @@
 <template>
-  <van-icon name="bars" :style="{ fontSize: ' 23px' }" />
+  <van-icon name="bars" />
 </template>
 
 <script>
@@ -12,4 +12,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.van-icon-bars {
+  font-size: 23px;
+}
 </style>

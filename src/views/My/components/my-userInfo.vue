@@ -51,6 +51,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      font-size: 16px;
       span {
         font-weight: 400;
         font-size: 12px;
