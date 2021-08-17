@@ -1,5 +1,5 @@
 <template>
-  <van-icon name="bars" />
+  <van-icon name="wap-nav" />
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.van-icon-bars {
-  font-size: 23px;
+.van-icon-wap-nav {
+  font-size: 24px;
 }
 </style>

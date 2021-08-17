@@ -2,11 +2,7 @@
   <div class="userLike">
     <div class="left">
       <div class="cover">
-        <van-image
-          width="50px"
-          height="50px"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
+        <van-image src="https://img.yzcdn.cn/vant/cat.jpeg" />
       </div>
       <div class="info">
         <p>我喜欢的音乐</p>
@@ -45,6 +41,8 @@ export default {
         vertical-align: middle;
         overflow: hidden;
         border-radius: 10px;
+        width: 50px;
+        height: 50px;
       }
     }
     .info {

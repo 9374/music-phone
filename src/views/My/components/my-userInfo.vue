@@ -2,12 +2,7 @@
   <div class="userInfo">
     <div class="user">
       <div class="avatar">
-        <van-image
-          round
-          width="50px"
-          height="50px"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-        />
+        <van-image round src="https://img.yzcdn.cn/vant/cat.jpeg" />
       </div>
       <div class="info">
         <p>12341234</p>
@@ -44,6 +39,8 @@ export default {
       padding: 0 20px;
       .van-image {
         border: 4px solid #fff;
+        width: 50px;
+        height: 50px;
       }
     }
     .info {

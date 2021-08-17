@@ -11,32 +11,25 @@
       @cancel="onCancel"
     />
   </div>
-  <div class="content">
-    <div class="history">
-      <span class="title">历史</span>
-      <div class="tags">
-        <div class="box">
-          <span class="tag">我爱</span><span class="tag">我爱</span
-          ><span class="tag">我爱</span><span class="tag">我爱</span
-          ><span class="tag">我爱</span>
-        </div>
-      </div>
-      <div class="delete">
-        <van-icon name="delete-o" />
-      </div>
+  <div class="main">
+    <div class="content">
+      <SearchHistory />
+      <SearchHot />
     </div>
-    <SearchHot />
   </div>
+  <PlayControl />
 </template>
 
 <script>
-import SearchHot from './search-hot.vue'
+import SearchHot from './components/search-hot.vue'
+import SearchHistory from './components/search-history.vue'
 import { Toast } from 'vant'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 export default {
   components: {
-    SearchHot
+    SearchHot,
+    SearchHistory
   },
   setup () {
     const router = useRouter()
@@ -64,36 +57,5 @@ export default {
 }
 .content {
   background-color: #fff;
-}
-.history {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 30px;
-  .title {
-    width: 44px;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 600;
-    margin-right: 10px;
-  }
-  .tags {
-    height: 30px;
-    overflow: hidden;
-    float: left;
-    .box {
-      overflow: auto;
-      white-space: nowrap;
-      .tag {
-        display: inline-block;
-        font-size: 14px;
-        background-color: #eee;
-        padding: 5px 10px;
-        border-radius: 15px;
-        margin: 0px 10px;
-      }
-    }
-  }
 }
 </style>

@@ -8,8 +8,9 @@
       <slot> </slot>
     </div>
     <div class="footer">
-      <p v-if="title === '歌曲'">查看全部39首歌曲<van-icon name="arrow" /></p>
-      <p v-if="title === '歌单'">查看全部29个歌单</p>
+      <router-link :to="to">
+        <p>{{ footerText }}<van-icon name="arrow" /></p>
+      </router-link>
     </div>
   </div>
 </template>
@@ -21,6 +22,14 @@ export default {
     title: {
       type: String,
       default: '歌曲'
+    },
+    to: {
+      type: String,
+      default: '/'
+    },
+    footerText: {
+      type: String,
+      default: '查看全部'
     }
   }
 }

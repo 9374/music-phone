@@ -1,11 +1,7 @@
 <template>
   <div class="item">
     <div class="left">
-      <van-image
-        width="50"
-        height="50"
-        src="https://img.yzcdn.cn/vant/cat.jpeg"
-      />
+      <van-image src="https://img.yzcdn.cn/vant/cat.jpeg" />
     </div>
     <div class="right">
       <p class="title">123123</p>
@@ -37,6 +33,8 @@ export default {
       vertical-align: middle;
       overflow: hidden;
       border-radius: 10px;
+      width: 50px;
+      height: 50px;
     }
   }
   .right {

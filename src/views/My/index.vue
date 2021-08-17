@@ -1,11 +1,14 @@
 <template>
   <div :style="{ background: '#f7f7f7' }">
     <MyHeader />
-    <div class="contnet">
-      <MyUserInfo />
-      <MyLike />
-      <MyPlayList />
+    <div class="main">
+      <div class="contnet">
+        <MyUserInfo />
+        <MyLike />
+        <MyPlayList />
+      </div>
     </div>
+    <PlayControl :isHome="true" />
     <FooterNav />
   </div>
 </template>

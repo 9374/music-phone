@@ -1,41 +1,60 @@
 <template>
-  <div class="SongItem">
-    <div class="info">
-      <div class="name">STAY</div>
-      <div class="singer">张杰</div>
+  <div class="item" @click="$router.push('/playListDetail/' + playListItem.id)">
+    <div class="left">
+      <van-image :src="playListItem.coverImgUrl + '?param=100y100'" />
     </div>
-    <div class="icon"><van-icon name="weapp-nav" /></div>
+    <div class="right">
+      <p class="title">{{ playListItem.name }}</p>
+      <p class="info" v-if="playListItem.creator">
+        <span>{{ playListItem.trackCount }}首音乐</span>
+        <span>, by {{ playListItem.creator.nickname }}</span>
+      </p>
+    </div>
   </div>
-  <p></p>
 </template>
 
 <script>
 export default {
-  name: 'SongItem'
-
+  name: 'ListItem',
+  props: {
+    playListItem: {
+      type: Object,
+      default: () => ({})
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
-.SongItem {
+.item {
   display: flex;
-  margin: 0 20px;
-  padding: 10px 0;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #ccc;
-  .info {
-    .name {
-      font-size: 16px;
-      color: black;
-    }
-    .singer {
-      font-size: 14px;
-      color: #ccc;
+  margin: 10px 0;
+  padding: 0 20px;
+  .left {
+    margin-right: 20px;
+    .van-image {
+      vertical-align: middle;
+      overflow: hidden;
+      border-radius: 10px;
+      width: 50px;
+      height: 50px;
     }
   }
-  .icon {
-    color: #ccc;
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .title {
+      max-width: 240px;
+      font-size: 18px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .info {
+      font-size: 14px;
+      color: #c8c8c8;
+    }
   }
 }
 </style>
