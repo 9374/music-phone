@@ -40,27 +40,29 @@ export default {
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 30px;
   .title {
     width: 50px;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    // margin-right: 10px;
   }
   .tags {
-    height: 30px;
-    overflow: hidden;
-    float: left;
+    max-width: 280px;
+    // height: 30px;
+    // float: left;
     .box {
-      min-width: 250px;
-      overflow: auto;
+      height: 30px;
+      min-width: 280px;
+      overflow-x: scroll;
+      overflow-y: hidden;
       white-space: nowrap;
       &::-webkit-scrollbar {
         display: none;
       }
       .tag {
+        height: 30px;
         display: inline-block;
         font-size: 14px;
         background-color: #eee;
@@ -69,6 +71,9 @@ export default {
         margin: 0px 10px;
       }
     }
+  }
+  .van-icon-delete-o {
+    font-size: 22px;
   }
 }
 </style>

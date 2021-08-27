@@ -1,7 +1,8 @@
 export default {
   namespaced: true,
   state: () => ({
-    searchHistoryList: ['我喜欢你', '明天过后', '生日快乐', '123木头人']
+    searchHistoryList: [],
+    searchDefault: '搜索歌曲 歌单 歌手'
   }),
   mutations: {
     // 添加内容到搜索历史
@@ -12,7 +13,7 @@ export default {
       const index = state.searchHistoryList.findIndex(item => {
         return item === payload
       })
-      if (index) {
+      if (index > -1) {
         state.searchHistoryList.splice(index, 1)
       }
       state.searchHistoryList.unshift(payload)
@@ -20,6 +21,9 @@ export default {
     // 清除搜索历史
     closeSearchHistory (state, payload) {
       state.searchHistoryList = []
+    },
+    updateSearchDefault (state, payload) {
+      state.searchDefault = payload
     }
   }
 }

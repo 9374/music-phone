@@ -18,6 +18,6 @@ export default createStore({
   plugins: [
     createPersistedState({
       key: 'music-phone',
-      paths: ['user', 'play']
+      paths: ['user', 'play', 'search']
     })]
 })

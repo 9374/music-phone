@@ -2,7 +2,7 @@
   <div class="top">
     <van-search
       v-model="value"
-      placeholder="搜索 歌手 歌曲"
+      :placeholder="searchDefault.showKeyword"
       shape="round"
       input-align="center"
       action-text="取消"
@@ -23,9 +23,10 @@
 <script>
 import SearchHot from './components/search-hot.vue'
 import SearchHistory from './components/search-history.vue'
-import { Toast } from 'vant'
+// import { Toast } from 'vant'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { mapState, useStore } from 'vuex'
 export default {
   components: {
     SearchHot,
@@ -33,13 +34,16 @@ export default {
   },
   setup () {
     const router = useRouter()
+    const store = useStore()
     const value = ref('')
     const onSearch = (val) => {
-      Toast(val)
+      if (value.value.length) {
+        router.push(`/search/result/${val}`)
+      } else {
+        router.push(`/search/result/${store.state.search.searchDefault.realkeyword}`)
+      }
     }
-
     const onCancel = () => {
-      Toast('取消')
       router.push('/')
     }
     return {
@@ -47,6 +51,9 @@ export default {
       onSearch,
       onCancel
     }
+  },
+  computed: {
+    ...mapState('search', ['searchDefault'])
   }
 }
 </script>

@@ -26,9 +26,17 @@ export default {
     oldPlayList: []
   }),
   mutations: {
+    // 改变正在播放的id
     changeCurrentPlayId (state, id) {
-      state.currentplayId = id
+      state.playstate.currentplayId = id
+    },
+    // 改变是否播放详情
+    changePlayDetail (state, boolean) {
+      // console.log('执行事件')
+      state.playstate.playDetail = boolean
+    },
+    changePlaying (state, boolean) {
+      state.playstate.isPlaying = boolean
     }
-
   }
 }

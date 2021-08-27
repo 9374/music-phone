@@ -57,6 +57,9 @@ export default {
         border-radius: 50%;
         width: 40px;
         height: 40px;
+        .van-image {
+          width: 100%;
+        }
         .date {
           font-size: 12px;
           position: absolute;

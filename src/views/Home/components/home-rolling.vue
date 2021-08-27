@@ -43,6 +43,9 @@ export default {
   overflow: hidden;
   border-radius: 20px;
 }
+.van-swipe {
+  width: 100%;
+}
 .my-swipe .van-swipe-item {
   // color: #fff;
   font-size: 20px;

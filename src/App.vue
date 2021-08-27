@@ -1,4 +1,5 @@
 <template>
+  <AudioModule />
   <router-view />
 </template>
 

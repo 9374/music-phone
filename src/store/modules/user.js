@@ -1,3 +1,4 @@
+import { loginStateAPI } from '@/Api/user.js'
 export default {
   namespaced: true,
 
@@ -10,7 +11,14 @@ export default {
       state.profile = payload
     },
     updateCookie (state, payload) {
-      state.coolie = payload
+      state.cookie = payload
+    }
+  },
+  actions: {
+    async loginStateInfo ({ commit }) {
+      const res = await loginStateAPI()
+      console.log(res)
     }
   }
+
 }

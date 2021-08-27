@@ -12,3 +12,7 @@ export const searchMultimatchAPI = (keywords) => {
 export const searchAPI = (keywords, limit, type) => {
   return request('/search', 'get', { keywords, limit, type })
 }
+// 获取默认搜索关键词
+export const searchDefault = () => {
+  return request('/search/default', 'get')
+}

@@ -4,29 +4,18 @@
       <p class="title">{{ title }}(1)个</p>
     </div>
     <div class="body">
-      <MyListItem />
-      <MyListItem />
-      <MyListItem />
-      <MyListItem />
-      <MyListItem />
-      <MyListItem />
-      <MyListItem />
-      <MyListItem />
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
-import MyListItem from './my-list-item.vue'
 export default {
   props: {
     title: {
       type: String,
       default: '创建歌单'
     }
-  },
-  components: {
-    MyListItem
   },
   setup () {
     return {}

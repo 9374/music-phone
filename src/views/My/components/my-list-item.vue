@@ -1,11 +1,16 @@
 <template>
   <div class="item">
     <div class="left">
-      <van-image src="https://img.yzcdn.cn/vant/cat.jpeg" />
+      <van-image :src="ListDetail.coverImgUrl + '?param=100y100'" />
     </div>
     <div class="right">
-      <p class="title">123123</p>
-      <p class="info"><span>20首</span> <span>, by 税税谁</span></p>
+      <p class="title">{{ ListDetail.name }}</p>
+      <p class="info">
+        <span>{{ ListDetail.trackCount }}首</span>
+        <span v-if="ListDetail.creator"
+          >, by {{ ListDetail.creator.nickname }}</span
+        >
+      </p>
     </div>
   </div>
 </template>

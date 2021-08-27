@@ -1,13 +1,18 @@
 <template>
-  <div class="userLike">
+  <div
+    class="userLike"
+    @click="$router.push(`/playListDetail/${item.id}`)"
+    v-for="item in userLikeList"
+    :key="item.id"
+  >
     <div class="left">
       <div class="cover">
-        <van-image src="https://img.yzcdn.cn/vant/cat.jpeg" />
+        <van-image :src="item.coverImgUrl + '?param=100y100'" />
       </div>
       <div class="info">
         <p>我喜欢的音乐</p>
         <div>
-          <span>222首</span>
+          <span>{{ item.trackCount }}首</span>
         </div>
       </div>
     </div>
@@ -18,9 +23,11 @@
 </template>
 
 <script>
+import { inject } from 'vue'
 export default {
   setup () {
-    return {}
+    const userLikeList = inject('userLikeList')
+    return { userLikeList }
   }
 }
 </script>

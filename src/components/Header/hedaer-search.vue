@@ -1,15 +1,31 @@
 <template>
   <van-button round @click="$router.push('/search')">
     <van-icon name="search" class="srearchIcon" />
-    搜索歌曲 歌单 歌手
+
+    {{ searchDefault.showKeyword }}
   </van-button>
 </template>
 
 <script>
+import { onMounted } from 'vue'
+import { searchDefault } from '@/Api/search.js'
+import { mapState, useStore } from 'vuex'
 export default {
   name: 'HeaderSearch',
   setup () {
+    const store = useStore()
+    const getSearchText = async () => {
+      const res = await searchDefault()
+      console.log('默认搜索词', res)
+      store.commit('search/updateSearchDefault', res.data)
+    }
+    onMounted(() => {
+      getSearchText()
+    })
     return {}
+  },
+  computed: {
+    ...mapState('search', ['searchDefault'])
   }
 }
 </script>

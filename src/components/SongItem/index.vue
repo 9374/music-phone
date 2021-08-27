@@ -57,6 +57,7 @@ export default {
   align-items: center;
   border-top: 1px solid #ccc;
   .left {
+    max-width: 260px;
     display: flex;
     align-items: center;
     .cover {
@@ -81,7 +82,7 @@ export default {
     .info {
       .name {
         font-size: 16px;
-        max-width: 270px;
+        max-width: 220px;
         color: black;
         overflow: hidden;
         white-space: nowrap;
@@ -94,6 +95,7 @@ export default {
     }
   }
   .icon {
+    font-size: 24px;
     color: #ccc;
   }
 }

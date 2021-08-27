@@ -12,13 +12,14 @@
         <HomeRec>
           <div class="box">
             <SongListCover
+              :picUrl="item.picUrl"
               v-for="item in recomList"
               :key="item.id"
               :Song="item"
             />
           </div>
           <template #right>
-            <More />
+            <More to="/playListSquare" />
           </template>
         </HomeRec>
         <!-- 雷达歌单 -->
@@ -28,11 +29,13 @@
               v-for="item in homePageInfo.blocks[1].creatives"
               :key="item.creativeId"
               :id="item.creativeId"
+              :picUrl="item.uiElement.image.imageUrl"
               :Song="item.uiElement"
+              :playCount="item.resources[0].resourceExtInfo.playCount"
             />
           </div>
           <template #right>
-            <More />
+            <More to="/playListSquare" />
           </template>
         </HomeRec>
         <!-- 新歌推荐 -->
@@ -60,7 +63,8 @@ import HomeNav from './components/Home-Nav.vue'
 import HomeRoling from './components/home-rolling.vue'
 import HomeRec from './components/Home-Rec.vue'
 import { ref, onMounted } from 'vue'
-import { personAlizedAPI, newSongAPI } from '@/Api/play.js'
+import { personAlizedAPI } from '@/Api/playList.js'
+import { newSongAPI } from '@/Api/song.js'
 import { HomePageApi } from '@/Api/home.js'
 const useRecomList = () => {
   const recomList = ref([])

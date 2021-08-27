@@ -1,5 +1,10 @@
 <template>
-  <div :class="isHome ? 'bottom' : 'nohome'" class="control">
+  <div
+    @click="changePlayDetil"
+    v-if="playstate.currentplayId"
+    :class="isHome ? 'bottom' : 'nohome'"
+    class="control"
+  >
     <div class="pic"><PlayAvatar /></div>
     <div class="info">
       <div class="box">
@@ -17,6 +22,7 @@
 </template>
 
 <script>
+import { mapState, useStore } from 'vuex'
 export default {
   name: 'PlayControl',
   props: {
@@ -26,7 +32,14 @@ export default {
     }
   },
   setup () {
-    return {}
+    const store = useStore()
+    const changePlayDetil = () => {
+      store.commit('play/changePlayDetail', true)
+    }
+    return { changePlayDetil }
+  },
+  computed: {
+    ...mapState('play', ['playstate'])
   }
 }
 </script>

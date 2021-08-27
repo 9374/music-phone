@@ -1,54 +1,55 @@
 <template>
-  <div class="main">
+  <div class="head" :style="bgimg">
+    <Back />
+    <span class="title">歌单</span>
+  </div>
+  <div
+    class="main"
+    :class="playstate.currentplayId ? 'detailPlay' : 'detailNoPlay '"
+  >
     <div class="top">
       <div class="bg" :style="bgimg"></div>
-      <div class="box">
-        <div class="head">
-          <Back />
-          <span class="title">歌单</span>
-        </div>
-        <div class="list-head">
-          <div class="banner">
-            <div class="left">
-              <div class="pic">
+      <div class="list-head">
+        <div class="banner">
+          <div class="left">
+            <div class="pic">
+              <van-image
+                fit="cover"
+                :src="playDetailList.coverImgUrl + '?param200y200'"
+              />
+            </div>
+          </div>
+          <div class="right">
+            <div class="name">
+              {{ playDetailList.name }}
+            </div>
+            <div class="user" v-if="playDetailList.creator">
+              <div class="avatar">
                 <van-image
-                  fit="cover"
-                  :src="playDetailList.coverImgUrl + '?param200y200'"
+                  round
+                  :src="playDetailList.creator.avatarUrl + '?param50y50'"
                 />
               </div>
+              <span>{{ playDetailList.creator.nickname }}</span>
             </div>
-            <div class="right">
-              <div class="name">
-                {{ playDetailList.name }}
-              </div>
-              <div class="user" v-if="playDetailList.creator">
-                <div class="avatar">
-                  <van-image
-                    round
-                    :src="playDetailList.creator.avatarUrl + '?param50y50'"
-                  />
-                </div>
-                <span>{{ playDetailList.creator.nickname }}</span>
-              </div>
-              <div class="info">
-                {{ playDetailList.description }}
-              </div>
+            <div class="info">
+              {{ playDetailList.description }}
             </div>
-            <div class="nav">
-              <div class="collection allflex">
-                <van-icon name="add-o" />
-                <span>{{ formatNumber(playDetailList.subscribedCount) }}</span>
-              </div>
-              |
-              <div class="comment allflex">
-                <van-icon name="comment-o" />
-                <span>{{ playDetailList.commentCount }}</span>
-              </div>
-              |
-              <div class="share allflex">
-                <van-icon name="share-o" />
-                <span>{{ playDetailList.shareCount }}</span>
-              </div>
+          </div>
+          <div class="nav">
+            <div class="collection allflex">
+              <van-icon name="add-o" />
+              <span>{{ formatNumber(playDetailList.subscribedCount) }}</span>
+            </div>
+            |
+            <div class="comment allflex">
+              <van-icon name="comment-o" />
+              <span>{{ formatNumber(playDetailList.commentCount) }}</span>
+            </div>
+            |
+            <div class="share allflex">
+              <van-icon name="share-o" />
+              <span>{{ formatNumber(playDetailList.shareCount) }}</span>
             </div>
           </div>
         </div>
@@ -67,7 +68,9 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import { playDetailAPI, songDetailAPI } from '@/Api/play.js'
+import { mapState } from 'vuex'
+import { songDetailAPI } from '@/Api/song.js'
+import { playDetailAPI } from '@/Api/playList.js'
 import { useRoute } from 'vue-router'
 import { formatNumber } from '@/utils/index.js'
 const usePlayDetail = () => {
@@ -98,71 +101,91 @@ const usePlayDetail = () => {
 export default {
   setup () {
     const { bgimg, playDetailList, SongsList } = usePlayDetail()
-
     return { playDetailList, formatNumber, bgimg, SongsList }
+  },
+  computed: {
+    ...mapState('play', ['playstate'])
   }
 }
 </script>
 
 <style lang="less" scoped>
-.top {
-  overflow-x: hidden;
-  height: 240px;
-  position: relative;
-  .bg {
-    overflow-x: hidden;
-    height: 200px;
-    width: 200%;
-    position: relative;
-    border-radius: 0 0 50% 50%; //左上角，右上角，右下角，左下角
-    transform: translateX(-26%);
-    left: 0;
-    top: 0;
-    &:after {
-      display: block;
-      content: "";
-      width: 200%;
-      height: 200px;
-      position: absolute;
-      left: -50%; //椭圆左边隐藏10%，右边隐藏10%
-      top: -5px;
-      border-radius: 0 0 50% 50%; //左上角，右上角，右下角，左下角
-      background-position: center;
-      // background-image: url(https://img.yzcdn.cn/vant/cat.jpeg);
-      background-image: var(--url);
-      background-repeat: no-repeat;
-      filter: blur(20px);
-      z-index: -1;
-    }
+.head {
+  padding: 0 20px;
+  height: 50px;
+  // background-color: rgba(255, 255, 255, 0.2);
+  background-color: #ccc;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  overflow: hidden;
+  .title {
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
   }
-  .box {
-    height: 200px;
-    padding-top: 50px;
+  &:after {
+    display: block;
+    content: "";
+    width: 200%;
+    height: 300px;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    .head {
-      padding: 0 20px;
-      height: 50px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      z-index: 10000;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
+    left: -52%;
+    //椭圆左边隐藏10%，右边隐藏10%
+    top: -50px;
+    background-position: top;
+    background-image: var(--url);
+    background-position: center;
+    filter: blur(20px);
+    // filter: opacity(50%);
+    // opacity: 1; //透明度设置
+    z-index: -1;
+  }
+}
+.main {
+  .top {
+    overflow-x: hidden;
+    height: 250px;
+    position: relative;
+    .bg {
+      background-color: #ccc;
+      overflow-x: hidden;
+      height: 200px;
+      width: 200%;
+      position: relative;
+      border-radius: 0 0 50% 50%; //左上角，右上角，右下角，左下角
+      transform: translateX(-26%);
       left: 0;
-      overflow: hidden;
-      .title {
-        flex: 1;
-        text-align: center;
-        font-size: 20px;
+      top: 0;
+      &:after {
+        display: block;
+        content: "";
+        width: 200%;
+        height: 200px;
+        position: absolute;
+        left: -50%; //椭圆左边隐藏10%，右边隐藏10%
+        top: -5px;
+        border-radius: 0 0 50% 50%; //左上角，右上角，右下角，左下角
+        background-position: center;
+        // background-image: url(https://img.yzcdn.cn/vant/cat.jpeg);
+        background-image: var(--url);
+        background-repeat: no-repeat;
+        filter: blur(20px);
+        //
+        z-index: -1;
       }
     }
     .list-head {
-      position: relative;
-      height: 180px;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      height: 200px;
+      width: 100%;
       // overflow: hidden;
       .banner {
         width: 100%;
@@ -244,6 +267,7 @@ export default {
     }
   }
 }
+
 .list {
   padding: 0 20px;
   .listItem {
