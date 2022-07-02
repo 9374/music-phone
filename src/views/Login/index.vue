@@ -68,6 +68,7 @@ import { loginInPhone, loginInEmail } from '@/Api/user.js'
 import { useStore } from 'vuex'
 import md5 from 'md5'
 import { useRouter } from 'vue-router'
+import { Toast } from 'vant'
 export default {
   name: 'Login',
   setup () {
@@ -94,28 +95,38 @@ export default {
     const phoneLogin = async (data) => {
       const res = await loginInPhone(data)
       console.log(res)
-      store.commit('user/updateProfile', res.profile)
-      store.commit('user/updateCookie', res.cookie)
-      toHome()
+      if (res.success) {
+        store.commit('user/updateProfile', res.profile)
+        store.commit('user/updateCookie', res.cookie)
+        toHome()
+      } else {
+        Toast(res.message)
+      }
     }
     const emailLogin = async (data) => {
       const res = await loginInEmail(data)
       console.log(res)
-      store.commit('user/updateProfile', res.profile)
-      store.commit('user/updateCookie', res.cookie)
-      toHome()
+      if (res.success) {
+        store.commit('user/updateProfile', res.profile)
+        store.commit('user/updateCookie', res.cookie)
+        toHome()
+      } else {
+        Toast(res.message)
+      }
     }
     // console.log(fm.value.validate)
     const onSubmit = (q, values) => {
-      if (q === 'phone') {
-        md5Password.value = md5(encodeURIComponent(values.password))
-        values.password = ''
-        phoneLogin({ ...values, md5_password: md5Password.value })
-      }
-      if (q === 'email') {
-        md5Password.value = md5(encodeURIComponent(values.password))
-        values.password = ''
-        emailLogin({ ...values, md5_password: md5Password.value })
+      md5Password.value = md5(encodeURIComponent(values.password))
+      delete values.password
+      switch (q) {
+        case 'phone': {
+          phoneLogin({ ...values, md5_password: md5Password.value })
+          break
+        }
+        case 'email': {
+          emailLogin({ ...values, md5_password: md5Password.value })
+          break
+        }
       }
       // console.log('submit', q, values)
     }
