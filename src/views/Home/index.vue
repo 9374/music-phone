@@ -3,10 +3,10 @@
     <HeaderNav />
     <div class="main">
       <div class="content">
-        <HomeRoling
-          v-if="homePageInfo.blocks"
-          :bannerList="homePageInfo.blocks[0].extInfo.banners"
-        />
+        <!-- 轮播图 -->
+        <HomeRoling/>
+        <!--           v-if="homePageInfo.blocks"
+          :bannerList="homePageInfo.blocks[0].extInfo.banners" -->
         <HomeNav />
         <!-- 推荐歌单 -->
         <HomeRec>
@@ -23,7 +23,7 @@
           </template>
         </HomeRec>
         <!-- 雷达歌单 -->
-        <HomeRec left="雷达歌单" v-if="homePageInfo.blocks">
+        <HomeRec left="雷达歌单" v-if="homePageInfo.blocks&&false">
           <div class="box">
             <SongListCover
               v-for="item in homePageInfo.blocks[1].creatives"

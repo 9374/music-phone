@@ -9,8 +9,8 @@ app.use(Toast)
 // import router from '@/router'
 const instance = axios.create({
   // baseURL: 'http://mana.sn9374.com:3000'
-  // baseURL: 'http://mana.eomb.cn:3000'
-  baseURL: 'http://localhost:3000'
+  baseURL: 'https://mana.eomb.cn:3001'
+  // baseURL: 'http://localhost:3000'
 })
 // 请求拦截器=>统一带token
 instance.interceptors.request.use(config => {
