@@ -1,7 +1,7 @@
 <template>
   <AudioModule />
-  <router-view />
+  <router-view  class="view"/>
 </template>
 
-<style lang="less">
+<style lang="less" >
 </style>

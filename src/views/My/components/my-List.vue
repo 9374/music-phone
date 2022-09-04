@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="header">
-      <p class="title">{{ title }}(1)个</p>
+      <p class="title">{{ title }}(0)个</p>
     </div>
     <div class="body">
       <slot />
