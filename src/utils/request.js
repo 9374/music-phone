@@ -9,7 +9,7 @@ app.use(Toast)
 // import router from '@/router'
 const instance = axios.create({
   // baseURL: 'http://mana.sn9374.com:3000'
-  baseURL: "https://pl-fe.cn/cloud-music-api/",
+  baseURL: 'https://pl-fe.cn/cloud-music-api/'
   // baseURL: 'http://localhost:3000'
 });
 // 请求拦截器=>统一带token
