@@ -23,7 +23,7 @@
           </template>
         </HomeRec>
         <!-- 雷达歌单 -->
-        <HomeRec left="雷达歌单" v-if="homePageInfo.blocks&&false">
+        <HomeRec left="雷达歌单new" v-if="homePageInfo.blocks&&false">
           <div class="box">
             <SongListCover
               v-for="item in homePageInfo.blocks[1].creatives"
