@@ -1,3 +1,10 @@
+<!--
+ * @description: 个人页面
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:23:10
+ * @version: V1.0.0
+!-->
 <template>
   <div :style="{ background: '#f7f7f7' }">
     <MyHeader />

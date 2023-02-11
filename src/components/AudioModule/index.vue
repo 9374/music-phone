@@ -1,3 +1,10 @@
+<!--
+ * @description: 播放器
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:26:56
+ * @version: V1.0.0
+!-->
 <template>
   <div v-if="playstate.currentplayId">
     <audio

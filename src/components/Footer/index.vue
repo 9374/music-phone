@@ -1,3 +1,10 @@
+<!--
+ * @description: 底部菜单栏;
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:27:21
+ * @version: V1.0.0
+!-->
 <template>
   <van-config-provider :theme-vars="themeVars">
     <van-tabbar route v-model="active">

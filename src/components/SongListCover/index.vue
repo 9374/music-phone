@@ -1,3 +1,10 @@
+<!--
+ * @description: 封面缩略图;
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 20:20:34
+ * @version: V1.0.0
+!-->
 <template>
   <div
     class="item"

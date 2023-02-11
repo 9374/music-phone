@@ -1,3 +1,10 @@
+/*
+ * @description:播放相关储存;
+ * @fileName: play.js
+ * @author: HanxiaoHui
+ * @date: 2023-02-11 18:25:35
+ * @version: V1.0.0
+*/
 export default {
   namespaced: true,
   state: () => ({
@@ -34,6 +41,13 @@ export default {
     changePlayDetail (state, boolean) {
       // console.log('执行事件')
       state.playstate.playDetail = boolean
+    },
+    // 更新播放列表
+    changePlayList (state, list) {
+      state.playstate.oldPlayList = JSON.parse(
+        JSON.stringify(state.playstate.playList)
+      )
+      state.playstate.playList = list
     },
     changePlaying (state, boolean) {
       state.playstate.isPlaying = boolean

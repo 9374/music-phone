@@ -1,3 +1,10 @@
+<!--
+ * @description: 歌单详情具体内容
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:22:54
+ * @version: V1.0.0
+!-->
 <template>
   <div class="head" :style="bgimg">
     <Back />
@@ -56,7 +63,8 @@
       </div>
     </div>
     <div class="list">
-      <PlayAll />
+      <PlayAll  @palyListAll="palyListAll"/>
+      <!-- <PlayAll /> -->
       <div class="listItem" v-for="(item, i) in SongsList" :key="item.id">
         <span class="index">{{ i + 1 }}</span>
         <SongItem :song="item" />
@@ -68,7 +76,7 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import { mapState } from 'vuex'
+import { mapState, useStore } from 'vuex'
 import { songDetailAPI } from '@/Api/song.js'
 import { playDetailAPI } from '@/Api/playList.js'
 import { useRoute } from 'vue-router'
@@ -85,6 +93,8 @@ const usePlayDetail = () => {
     getSongsList()
     bgimg.value = { '--url': `url(${playDetailList.value.coverImgUrl}?param200y200)` }
   }
+
+  // 获取歌曲列表
   const getSongsList = async () => {
     const arr = ref([])
     playDetailList.value.trackIds.forEach(item => arr.value.push(item.id))
@@ -100,8 +110,15 @@ const usePlayDetail = () => {
 }
 export default {
   setup () {
+    const store = useStore()
+    function palyListAll () {
+      console.log('触发播放全部')
+      console.log(store)
+      // store.commit('changeCurrentPlayId')
+      // store.commit('changePlayList', SongsList)
+    }
     const { bgimg, playDetailList, SongsList } = usePlayDetail()
-    return { playDetailList, formatNumber, bgimg, SongsList }
+    return { playDetailList, formatNumber, bgimg, SongsList, palyListAll }
   },
   computed: {
     ...mapState('play', ['playstate'])

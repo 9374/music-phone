@@ -1,3 +1,10 @@
+<!--
+ * @description: 后退按钮;
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:27:06
+ * @version: V1.0.0
+!-->
 <template>
   <van-icon name="arrow-left" @click="back" />
 </template>

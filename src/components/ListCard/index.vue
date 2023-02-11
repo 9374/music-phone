@@ -1,3 +1,10 @@
+<!--
+ * @description: 播放列表每一个歌曲卡片;
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:28:36
+ * @version: V1.0.0
+!-->
 <template>
   <div class="card">
     <div class="head">

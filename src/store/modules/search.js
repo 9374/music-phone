@@ -1,3 +1,10 @@
+/*
+ * @description:搜索相关;
+ * @fileName: search.js
+ * @author: HanxiaoHui
+ * @date: 2023-02-11 18:25:55
+ * @version: V1.0.0
+*/
 export default {
   namespaced: true,
   state: () => ({

@@ -1,3 +1,10 @@
+<!--
+ * @description: 搜索页
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:22:08
+ * @version: V1.0.0
+!-->
 <template>
   <div class="top">
     <van-search

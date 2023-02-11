@@ -1,14 +1,15 @@
 <template>
-  <div class="playBtn">
+  <div class="playBtn" >
     <van-icon name="play-circle-o" /><span>播放全部</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PlayAll',
-  setup () {
-    return {}
+  emits: ['palyListAll'],
+  name: 'PlayAllBtn',
+  setup (props, content) {
+    content.emit('palyListAll')
   }
 }
 </script>

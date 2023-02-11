@@ -1,3 +1,10 @@
+<!--
+ * @description:搜索结果页
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:21:11
+ * @version: V1.0.0
+!-->
 <template>
   <div>
     <div class="head">

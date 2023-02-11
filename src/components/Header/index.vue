@@ -1,3 +1,10 @@
+<!--
+ * @description: 头部
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:27:39
+ * @version: V1.0.0
+!-->
 <template>
   <div class="box">
     <div class="top">

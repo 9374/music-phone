@@ -1,3 +1,10 @@
+<!--
+ * @description:  首页
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:23:48
+ * @version: V1.0.0
+!-->
 <template >
   <div class="home">
     <HeaderNav />

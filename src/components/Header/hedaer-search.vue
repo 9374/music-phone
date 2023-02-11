@@ -1,3 +1,10 @@
+<!--
+ * @description: 头部搜索
+ * @fileName: hedaer-search.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:28:05
+ * @version: V1.0.0
+!-->
 <template>
   <van-button round @click="$router.push('/search')">
     <van-icon name="search" class="srearchIcon" />

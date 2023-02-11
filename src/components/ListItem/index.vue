@@ -1,3 +1,10 @@
+<!--
+ * @description: 首页卡片
+ * @fileName: index.vue
+ * @author: HanXiaoHui
+ * @date: 2023-02-11 18:28:58
+ * @version: V1.0.0
+!-->
 <template>
   <div class="item" @click="$router.push('/playListDetail/' + playListItem.id)">
     <div class="left">

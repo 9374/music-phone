@@ -1,3 +1,10 @@
+/*
+ * @description:二次封装请求;
+ * @fileName: request.js
+ * @author: HanxiaoHui
+ * @date: 2023-02-11 18:25:00
+ * @version: V1.0.0
+*/
 import axios from 'axios'
 import store from '@/store/index.js'
 import { createApp } from 'vue'

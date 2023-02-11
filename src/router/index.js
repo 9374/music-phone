@@ -1,3 +1,10 @@
+/*
+ * @description:路由跳转;
+ * @fileName: index.js
+ * @author: HanxiaoHui
+ * @date: 2023-02-11 18:26:38
+ * @version: V1.0.0
+*/
 import { createRouter, createWebHashHistory } from 'vue-router'
 // 首页
 const Home = () => import('@/views/Home/index.vue')
