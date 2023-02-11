@@ -113,9 +113,10 @@ export default {
     const store = useStore()
     function palyListAll () {
       console.log('触发播放全部')
-      console.log(store)
-      // store.commit('changeCurrentPlayId')
-      // store.commit('changePlayList', SongsList)
+      // console.log(store)
+      console.log(SongsList.value[0])
+      store.commit('play/changeCurrentPlayId', SongsList.value[0])
+      store.commit('play/changePlayList', SongsList.value)
     }
     const { bgimg, playDetailList, SongsList } = usePlayDetail()
     return { playDetailList, formatNumber, bgimg, SongsList, palyListAll }
@@ -139,7 +140,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 1000;
   overflow: hidden;
   .title {
     flex: 1;

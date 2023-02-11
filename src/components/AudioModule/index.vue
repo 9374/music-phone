@@ -8,17 +8,40 @@
 <template>
   <div v-if="playstate.currentplayId">
     <audio
-      :src="` https://music.163.com/song/media/outer/url?id=${playstate.currentplayId}.mp3`"
+      @timeupdate="onupdate"
+      @canplay="getDuration"
+      @play="play"
+      @pause="pause"
+      @ended="end"
+      :loop="playstate.isLoop"
+      :src=src
+      :autoplay="playstate.isPlaying"
     ></audio>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { computed, onMounted } from 'vue'
+import { useStore, mapState } from 'vuex'
 export default {
   name: 'AudioModule',
   setup () {
-    return {}
+    const store = useStore()
+    console.log(store.state.play.playstate.currentplayId)
+
+    // const src = ` https://music.163.com/song/media/outer/url?id=${store.state.play.playstate.currentplayId}.mp3`
+    const src = computed(() => {
+      console.log(store)
+      console.log(store.playstate)
+      return ` https://music.163.com/song/media/outer/url?id=${store.state.play.playstate.currentplayId}.mp3`
+    })
+    function onupdate () {
+
+    }
+    onMounted(() => {
+      console.log('1')
+    })
+    return { src, onupdate }
   },
   computed: {
     ...mapState('play', ['playstate'])

@@ -8,9 +8,9 @@
     <div class="pic"><PlayAvatar /></div>
     <div class="info">
       <div class="box">
-        <div class="name">过明天过后明天过后明天过</div>
+        <div class="name">{{playstate.currentPlayInfo.name}}</div>
         <span>-</span>
-        <div class="singer">张杰</div>
+        <div class="singer">{{playstate.currentPlayInfo.ar[0]?.name}}</div>
       </div>
     </div>
     <div class="right">
@@ -36,9 +36,11 @@ export default {
     const changePlayDetil = () => {
       store.commit('play/changePlayDetail', true)
     }
+    console.log(store.state.play.playstate)
     return { changePlayDetil }
   },
   computed: {
+
     ...mapState('play', ['playstate'])
   }
 }

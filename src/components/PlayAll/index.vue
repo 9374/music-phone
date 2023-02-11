@@ -1,5 +1,5 @@
 <template>
-  <div class="playBtn" >
+  <div class="playBtn" @click="playList">
     <van-icon name="play-circle-o" /><span>播放全部</span>
   </div>
 </template>
@@ -7,9 +7,12 @@
 <script>
 export default {
   emits: ['palyListAll'],
-  name: 'PlayAllBtn',
+  name: 'PlayAll',
   setup (props, content) {
-    content.emit('palyListAll')
+    function playList () {
+      content.emit('palyListAll')
+    }
+    return { playList }
   }
 }
 </script>

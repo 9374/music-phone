@@ -3,14 +3,23 @@
     class="cover widthsmall discAnimation"
     :class="{ widthsmall: type === 'smail', widthBig: type === 'big' }"
   >
-    <img class="fm" src="@/assets/MusicDetailCard/cover.jpg" alt="" />
+    <img class="fm" :src="imgUrl?imgUrl:'@/assets/MusicDetailCard/cover.jpg'" alt="" />
     <img class="bg" src="@/assets/MusicDetailCard/disc.png" alt="" />
   </div>
 </template>
 
 <script>
+import { useStore } from 'vuex'
+import { computed } from 'vue'
 export default {
   name: 'PlayAvatar',
+  setup () {
+    const store = useStore()
+    const imgUrl = computed(() => {
+      return store.state.play.playstate.currentPlayInfo.al.picUrl
+    })
+    return { imgUrl }
+  },
   props: {
     type: {
       type: String,

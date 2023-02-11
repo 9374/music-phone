@@ -1,14 +1,14 @@
 <template>
   <!-- -->
   <van-popup v-model:show="show" position="bottom" :style="{ height: '100%' }">
-    <div class="playDetail">
+    <div class="playDetail" :style="bgImg">
       <div class="head">
         <div class="hide" @click="changePlayDetail">
           <van-icon name="arrow-down" />
         </div>
         <div class="title">
-          <div class="name">明天你好</div>
-          <div class="singer">张杰</div>
+          <div class="name">{{store.state.play.playstate.currentPlayInfo.name}}</div>
+          <div class="singer">{{store.state.play.playstate.currentPlayInfo.ar[0].name}}</div>
         </div>
         <div class="share">
           <van-icon name="share-o" />
@@ -50,7 +50,7 @@
 
 <script>
 import { mapState, useStore } from 'vuex'
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 export default {
   name: 'PlayDetail',
   computed: {
@@ -62,16 +62,24 @@ export default {
     const changePlayDetail = () => {
       store.commit('play/changePlayDetail', false)
     }
+    const bgImg = computed(() => {
+      // console.log(store.state.play.playsate.currentPlayInfo.name)
+      // console.log(store.state.play.playsate.currentPlayInfo.al.picUrl)
+      return { '--url': `url(${store.state.play.playstate.currentPlayInfo.al.picUrl}?param200y200)` }
+    })
     const show = ref(false)
+
     // const visible = ref(false)
     watch(() => { return store.state.play.playstate.playDetail }, (newVal) => {
       console.log(newVal)
       show.value = newVal
+      console.log('newVF=', newVal)
+      // bgimg.value = { '--url': `url(${playDetailList.value.coverImgUrl}?param200y200)` }
     }, { immediate: true })
     const onChange = () => {
 
     }
-    return { value, onChange, changePlayDetail, show }
+    return { value, onChange, changePlayDetail, show, bgImg, store }
   }
 
 }
@@ -99,7 +107,7 @@ export default {
     top: -40px;
     // border-radius: 0 0 50% 50%; //左上角，右上角，右下角，左下角
     background-position: center;
-    background-image: url("~@/assets/MusicDetailCard/cover.jpg");
+    background-image: var(--url);
     background-repeat: no-repeat;
     filter: blur(19px);
     background-size: cover;

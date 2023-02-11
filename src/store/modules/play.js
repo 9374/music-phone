@@ -26,16 +26,20 @@ export default {
       // 是否显示播放详情
       playDetail: false,
       // 当前播放歌曲在歌单中的序列
-      currentIndex: 0
+      currentIndex: 0 // 当前播放歌曲详细信息对象
     },
     // 当前播放列表
     playList: [],
+    // 旧播放列表
     oldPlayList: []
   }),
   mutations: {
     // 改变正在播放的id
-    changeCurrentPlayId (state, id) {
-      state.playstate.currentplayId = id
+    changeCurrentPlayId (state, info) {
+      console.log(info)
+      state.playstate.currentplayId = info.id
+      state.playstate.isPlaying = true
+      state.playstate.currentPlayInfo = info
     },
     // 改变是否播放详情
     changePlayDetail (state, boolean) {
@@ -45,7 +49,7 @@ export default {
     // 更新播放列表
     changePlayList (state, list) {
       state.playstate.oldPlayList = JSON.parse(
-        JSON.stringify(state.playstate.playList)
+        JSON.stringify(state.playstate.playList || [])
       )
       state.playstate.playList = list
     },
